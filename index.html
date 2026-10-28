@@ -99,7 +99,6 @@
 
         .sub {
             color: var(--mut);
-            max-width: 65ch;
             margin: 0 0 36px;
             font-size: 1rem;
             line-height: 1.7;
@@ -272,7 +271,7 @@
             z-index: -1;
             pointer-events: none;
             background:
-                linear-gradient(120deg, rgba(10, 22, 58, 0.891) 0%, rgba(10, 22, 58, 0.374) 52%, transparent 62%),
+                linear-gradient(120deg, rgba(10, 22, 58, 0.891) 0%, rgba(10, 22, 58, 0.507) 52%, transparent 62%),
                 linear-gradient(180deg, rgba(8, 16, 44, .3) 0%, transparent 20%, transparent 72%, rgba(8, 16, 44, .28) 100%);
         }
 
@@ -1299,14 +1298,15 @@
         }
 
         .st h3 {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            font-weight: 500;
             margin: 18px 0 8px;
             color: #fff;
         }
 
         .st p {
             margin: 0;
-            color: #D6DEF0;
+            color: #f9fbff;
             font-size: .92rem;
             line-height: 1.55;
         }
@@ -2551,6 +2551,248 @@
                     <div class="rise r4"><a class="b hero-cta" href="#by-course">Explore programmes</a></div>
                 </div>
             </div>
+
+             <div class="w hero-tk">
+                <div class="tick" role="region" aria-label="Recent scholarships">
+                    <div class="tick-l">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M10 3l1.6 4.9L16.5 9.5l-4.9 1.6L10 16l-1.6-4.9L3.5 9.5l4.9-1.6L10 3z" />
+                            <path d="M18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8L18 14z" />
+                        </svg>
+                        <span>Recent<br>Scholarships</span>
+                    </div>
+                    <div class="tick-r" id="tk">
+                        <div class="tk-track" id="tkt">
+                            <div class="tk-c"><span class="tk-a" style="--bg-c:#fff;--fg-c:#C8102E">MX</span>
+                                <div><b>Tanayya</b><small><i>AED 25,000</i>Middlesex University Dubai</small></div>
+                            </div>
+                            <div class="tk-c"><span class="tk-a" style="--bg-c:#D4155F;--fg-c:#fff">MU</span>
+                                <div><b>Rafay</b><small><i>AED 80,000</i>Murdoch University Dubai</small></div>
+                            </div>
+                            <div class="tk-c"><span class="tk-a" style="--bg-c:#1C1C28;--fg-c:#fff">DM</span>
+                                <div><b>Bader</b><small><i>AED 20,000</i>De Montfort University Dubai</small></div>
+                            </div>
+                            <div class="tk-c"><span class="tk-a" style="--bg-c:#fff;--fg-c:#C8102E">UB</span>
+                                <div><b>Fahad</b><small><i>AED 18,000</i>University of Birmingham Dubai</small></div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <style>
+                  /* Recent scholarships glass ticker */
+        .tick {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 12px 30px 12px 30px;
+            border-radius: var(--r-pill);
+            background: rgba(255, 255, 255, .14);
+            border: 1px solid rgba(255, 255, 255, .5);
+            -webkit-backdrop-filter: blur(18px) saturate(1.2);
+            backdrop-filter: blur(18px) saturate(1.2);
+            box-shadow: 0 24px 50px -24px rgba(5, 12, 40, .55), inset 0 1px 0 rgba(255, 255, 255, .35);
+        }
+
+        .tick-l {
+            flex: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-right: 26px;
+            border-right: 1px solid rgba(255, 255, 255, .32);
+            font-size: .84rem;
+            font-weight: 500;
+            line-height: 1.25;
+            color: #fff;
+        }
+
+        .tick-l svg {
+            width: 22px;
+            height: 22px;
+            color: #F2C773;
+        }
+
+        /* marquee viewport */
+        .tick-r {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+        }
+
+        /* moving track = two identical groups, shifted by exactly 50% for a seamless loop */
+        .tk-track {
+            display: flex;
+            width: max-content;
+            animation: tkm var(--tk-t, 30s) linear infinite;
+            will-change: transform;
+        }
+
+        .tk-grp {
+            display: flex;
+            flex: none;
+        }
+
+        @keyframes tkm {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* pause on hover, keyboard focus, touch */
+        .tick-r:hover .tk-track,
+        .tick-r:focus-within .tk-track,
+        .tick-r.paused .tk-track {
+            animation-play-state: paused;
+        }
+
+        .tk-c {
+            flex: 0 0 auto;
+            min-width: 252px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 20px 8px 8px;
+            margin-right: 12px;
+            border-radius: var(--r-pill);
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .tk-a {
+            flex: none;
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-c, #fff);
+            color: var(--fg-c, #C8102E);
+            font: 700 .8rem 'Poppins', sans-serif;
+            letter-spacing: -.02em;
+            box-shadow: 0 6px 14px -6px rgba(5, 12, 40, .5);
+        }
+
+        .tk-c b {
+            display: block;
+            font-size: .82rem;
+            font-weight: 500;
+            line-height: 1.25;
+            color: #fff;
+        }
+
+        .tk-c small {
+            display: block;
+            font-size: .7rem;
+            line-height: 1.3;
+            color: rgba(255, 255, 255, 0.986);
+            white-space: nowrap;
+        }
+
+        .tk-c small i {
+            font-style: normal;
+            font-size: .7rem;
+            font-weight: 700;
+            margin-right: 6px;
+            color: #fecc8a;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tick-r {
+                overflow-x: auto;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+
+            .tk-track {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 1040px) {
+            .tick {
+                padding-left: 22px
+            }
+
+            .tick-l {
+                padding-right: 18px
+            }
+        }
+
+        @media (max-width: 760px) {
+            .hero {
+                padding-top: 88px;
+                background-position: 70% center;
+            }
+
+            .hero::before {
+                background:
+                    linear-gradient(90deg, rgba(10, 22, 58, .62) 0%, rgba(10, 22, 58, .3) 60%, rgba(10, 22, 58, .08) 100%),
+                    linear-gradient(180deg, rgba(8, 16, 44, .3) 0%, transparent 20%, transparent 60%, rgba(8, 16, 44, .45) 100%);
+            }
+
+            .hero-in {
+                align-items: flex-start;
+                padding-block: 20px 28px;
+            }
+
+            .hero-cta {
+                padding: 15px 24px;
+                font-size: .95rem;
+            }
+
+            .hero-trust li {
+                padding: 0 14px;
+                font-size: .7rem;
+            }
+
+            .tick {
+                flex-wrap: wrap;
+                gap: 12px;
+                padding: 14px;
+                border-radius: 26px;
+            }
+
+            .tick-l {
+                order: 1;
+                flex: 1;
+                padding: 0 0 0 6px;
+                border-right: 0;
+            }
+
+            .tick-r {
+                order: 2;
+                flex: 0 0 100%;
+            }
+
+            .tk-c {
+                min-width: 236px
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-trust {
+                gap: 12px 0
+            }
+
+            .hero-trust li {
+                padding: 0 10px
+            }
+
+            .hero-trust li:first-child {
+                padding-left: 0
+            }
+
+            .hero-trust svg {
+                width: 20px;
+                height: 20px
+            }
+        }
+
+            </style>
         </div>
 
         <!-- By College -->
@@ -2690,7 +2932,6 @@
             </div>
         </section>
 
-        <!-- Eligibility Predictor -->
         <!-- Eligibility Predictor -->
         <section id="eligibility">
             <div class="w pg">
