@@ -21,7 +21,7 @@
             --red: #E93C47;
             --red-600: #CF2A35;
             --red-50: #FDEBEC;
-            --bg: #F5F7FC;
+            --bg: #ffffff;
             --surf: #FFFFFF;
             --ink: #1B2233;
             --mut: #5B6478;
@@ -82,11 +82,11 @@
         }
 
         section {
-            padding: 84px 0
+            padding: 55px 0
         }
 
         h2 {
-            font-size: clamp(1.85rem, 4.2vw, 2.75rem);
+            font-size: clamp(1.8rem, 4.2vw, 2.75rem);
             font-weight: 600;
             line-height: 1.15;
             margin: 0 0 14px;
@@ -95,8 +95,8 @@
 
         h3 {
             margin: 0 0 6px;
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .sub {
@@ -230,6 +230,162 @@
             opacity: .8;
         }
 
+        .expert-btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #F5695C, #EE4851);
+            border-radius: 50px;
+            padding: 4px 16px 4px 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            width: max-content;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+            animation: expertPulse 2.8s ease-in-out infinite;
+        }
+
+        @keyframes expertPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(244, 243, 243, 0.604);
+            }
+
+            50% {
+                box-shadow: 0 0 0 7px rgba(245, 105, 92, 0.131);
+            }
+        }
+
+        .expert-btn:hover {
+            animation-play-state: paused;
+            box-shadow: 0 5px 18px rgba(238, 72, 81, 0.25);
+            transform: translateY(-2px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .expert-btn {
+                animation: none;
+            }
+        }
+
+        /* Hover Effect */
+        .expert-btn:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background-color: #001e3e;
+            /* Dark blue on hover */
+            border-color: #001e3e;
+        }
+
+        /* Change text to white on hover */
+        .expert-btn:hover .text-sub,
+        .expert-btn:hover .text-main {
+            color: #ffffff;
+        }
+
+        /* Red Circle with Phone Icon */
+        .icon-wrapper {
+            position: relative;
+            width: 36px;
+            height: 36px;
+            background-color: #fefefe;
+            /* Red */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        /* Phone SVG Icon */
+        .icon-wrapper svg {
+            width: 18px;
+            height: 18px;
+            fill: #e63946;
+        }
+
+        /* Green Status Dot */
+        .status-dot {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #00c853;
+            /* Green */
+            border: 2px solid #ffffff;
+            /* White border to match new background */
+            border-radius: 50%;
+            box-sizing: content-box;
+        }
+
+        /* Text Layout */
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        /* "Toll free" text */
+        .text-sub {
+            color: #fafafb;
+            /* Light greyish blue for better hierarchy */
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 1px;
+            transition: color 0.2s ease;
+        }
+
+        /* "Talk to an expert" text */
+        .text-main {
+            color: #ffffff;
+            /* Dark blue */
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0.3px;
+            transition: color 0.2s ease;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+
+            #by-course {
+                margin-inline: 10px;
+            }
+
+            #by-college {
+                margin-inline: 10px;
+            }
+
+            section {
+                padding: 45px 0
+            }
+
+            .expert-btn {
+                padding: 3px 12px 3px 3px;
+            }
+
+            .icon-wrapper {
+                width: 30px;
+                height: 30px;
+            }
+
+            .icon-wrapper svg {
+                width: 15px;
+                height: 15px;
+            }
+
+            .text-main {
+                font-size: 13px;
+            }
+
+            .text-sub {
+                font-size: 10px;
+            }
+        }
+
         .nav-cta,
         .hero-cta {
             font-weight: 500;
@@ -267,12 +423,17 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 680px;
+
+            box-sizing: border-box;
             min-height: max(100svh, 680px);
             padding: 96px 0 34px;
+
             color: #fff;
-            background: #010102 url("Media/hero-banner.webp") center / cover no-repeat;
-            background-position: 100%;
+            background-color: #010102;
+            background-image: url("Media/hero-banner.webp");
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: 100% 100%;
         }
 
         /* Mobile hero background */
@@ -305,7 +466,7 @@
             z-index: -1;
             pointer-events: none;
             background:
-                linear-gradient(120deg, rgba(10, 22, 58, 0.891) 0%, rgba(10, 22, 58, 0.507) 52%, transparent 62%),
+                linear-gradient(120deg, rgb(10, 22, 58) 0%, rgba(10, 22, 58, 0.094) 52%, transparent 62%),
                 linear-gradient(180deg, rgba(8, 16, 44, .3) 0%, transparent 20%, transparent 72%, rgba(8, 16, 44, .28) 100%);
         }
 
@@ -408,7 +569,7 @@
         }
 
         .hero-cta {
-            padding: 18px 30px;
+            padding: 14px 20px;
             font-size: 1rem;
             gap: 14px;
             box-shadow: 0 16px 30px -14px rgba(238, 72, 81, .75);
@@ -778,7 +939,7 @@
             overflow: hidden;
             isolation: isolate;
             color: #fff;
-            padding: 104px 0;
+            padding: 44px 0;
             background:
                 radial-gradient(760px 420px at 92% 6%, rgba(233, 60, 71, .34), transparent 62%),
                 radial-gradient(640px 460px at 2% 98%, rgba(242, 176, 53, .16), transparent 60%),
@@ -801,7 +962,7 @@
 
         #eligibility h2 {
             color: #fff;
-            font-size: clamp(2.1rem, 4.8vw, 3.5rem);
+            font-size: clamp(1.8rem, 4.8vw, 3.5rem);
             line-height: 1.08;
         }
 
@@ -1014,7 +1175,7 @@
             .w {
                 max-width: 1300px;
                 margin: 0 auto;
-                padding: 0 4px;
+                padding: 0 10px;
             }
 
 
@@ -1033,7 +1194,7 @@
             }
 
             .sent {
-                font-size: 1rem;
+                font-size: 0.9rem;
                 line-height: 2.6;
             }
 
@@ -1094,7 +1255,6 @@
             background: linear-gradient(145deg, #ffffff 0%, var(--bg) 100%);
             border: 1px solid rgba(39, 72, 150, 0.3);
             border-radius: var(--r-md);
-            box-shadow: 0 14px 32px rgba(20, 50, 100, 0.08);
             transform: translateY(-3px);
             transition:
                 transform 0.25s ease,
@@ -1104,6 +1264,10 @@
 
         .cd {
             padding-bottom: 0;
+        }
+
+        .cd p {
+            font-size: 15px;
         }
 
         /* Accent line */
@@ -1216,11 +1380,13 @@
             }
 
             .cd h3 {
-                font-size: 1rem;
+                font-size: 1.2rem;
+                font-weight: 600;
             }
 
             .cd p {
                 font-size: 0.86rem;
+                margin: 0px;
             }
         }
 
@@ -1247,7 +1413,7 @@
             overflow: hidden;
             isolation: isolate;
             color: #fff;
-            padding: 72px 0;
+            padding: 44px 0;
             background: linear-gradient(135deg, rgba(27, 50, 112, .88), rgba(39, 72, 150, .82) 50%, rgba(20, 32, 73, 0.192)), url('Media/celebrating-graduation-success.jpg') center/cover no-repeat;
         }
 
@@ -1292,10 +1458,10 @@
             counter-increment: s;
             position: relative;
             overflow: hidden;
-            padding: 28px 26px 30px;
+            padding: 18px 16px 20px;
             border-radius: 24px;
-            background: rgba(255, 255, 255, .09);
-            border: 1px solid rgba(255, 255, 255, .18);
+            background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.427));
+
             transition: transform .3s, background .3s;
         }
 
@@ -1316,11 +1482,19 @@
             font: 800 1.2rem 'Poppins', sans-serif;
         }
 
+        .st {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
         .st h3 {
             font-size: 1.3rem;
             font-weight: 500;
             margin: 18px 0 8px;
             color: #fff;
+            line-height: 1.35;
+            min-height: 2.7em;
         }
 
         .st p {
@@ -1328,6 +1502,7 @@
             color: #f9fbff;
             font-size: .92rem;
             line-height: 1.55;
+            text-align: left;
         }
 
         .adm-cta {
@@ -1349,7 +1524,7 @@
 
         .fq-l {
             position: sticky;
-            top: 96px
+            top: 96px;
         }
 
         .fq-l .sub {
@@ -1389,9 +1564,9 @@
         }
 
         .fq-r summary {
-            padding: 22px 0;
+            padding: 20px 0;
             align-items: center;
-            font: 700 1.05rem/1.4 'Poppins', sans-serif;
+            font: 600 1.05rem/1.4 'Poppins', sans-serif;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -1411,7 +1586,6 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: var(--blue-50);
             color: var(--blue);
             font: 500 1.4rem/1 'Poppins', sans-serif;
             transition: transform .25s, background .25s, color .25s;
@@ -1423,8 +1597,7 @@
 
         .fq-r details[open] summary::after {
             transform: rotate(45deg);
-            background: var(--blue);
-            color: #fff;
+            color: var(--blue);
         }
 
         .fq-r details p {
@@ -1447,7 +1620,7 @@
 
         /* ===== CONTACT FORM ===== */
         #apply {
-            padding: 84px 0 96px;
+            padding: 45px 0 46px;
         }
 
         .cta-form-wrap {
@@ -1491,7 +1664,6 @@
             margin: 0 auto;
             color: #D6DEF0;
             font-size: 1.05rem;
-            max-width: 44ch;
         }
 
         /* Updated Form Grid */
@@ -1500,12 +1672,12 @@
             grid-template-columns: repeat(3, 1fr);
             /* 3 columns */
             gap: 20px;
-            max-width: 960px;
+            max-width: 1260px;
             /* Widened for 3 columns */
             margin: 0 auto;
             background: #fff;
             border-radius: 24px;
-            padding: 40px 36px;
+            padding: 20px 26px;
             box-shadow: 0 24px 48px -20px rgba(4, 10, 36, .5);
         }
 
@@ -2492,7 +2664,7 @@
 
             .cs-card {
                 padding: 22px 18px 18px;
-                flex-basis: min(320px, 88%);
+                flex-basis: min(360px, 100%);
             }
         }
 
@@ -2530,6 +2702,190 @@
                 animation: none;
             }
         }
+
+        /* ===== Popup form ===== */
+        .pm {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            padding: 16px;
+            background: rgba(8, 16, 44, .62);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s, visibility .25s
+        }
+
+        .pm.open {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .pm-box {
+            position: relative;
+            width: 100%;
+            max-width: 660px;
+            max-height: calc(100dvh - 32px);
+            overflow: auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: var(--sh-3);
+            transform: translateY(18px) scale(.98);
+            transition: transform .3s ease
+        }
+
+        .pm.open .pm-box {
+            transform: none
+        }
+
+        .pm-hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 200px;
+            padding: 28px;
+            color: #fff;
+            background: linear-gradient(180deg, rgba(10, 22, 58, .2) 0%, rgba(10, 22, 58, .9) 100%), url("Media/popup-form.png") center/cover no-repeat, #274896
+        }
+
+        .pm-chip {
+            align-self: flex-start;
+            margin-bottom: 12px;
+            padding: 5px 12px;
+            border-radius: var(--r-pill);
+            background: var(--gold);
+            color: #1B2233;
+            font: 700 .72rem 'Poppins', sans-serif;
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+
+        .pm-hero h3 {
+            margin: 0 0 6px;
+            color: #fff;
+            font-size: clamp(1.4rem, 3.6vw, 1.95rem);
+            font-weight: 600;
+            line-height: 1.2
+        }
+
+        .pm-hero p {
+            margin: 0;
+            color: #D6DEF0;
+            font-size: .92rem
+        }
+
+        .pm-x {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .5);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background .18s, color .18s
+        }
+
+        .pm-x:hover {
+            background: #fff;
+            color: var(--ink)
+        }
+
+        .pm-form {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 16px;
+            padding: 26px 28px 28px
+        }
+
+        .pm-form .full {
+            grid-column: 1/-1
+        }
+
+        .pm-form .b {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 1rem
+        }
+
+        .pm-note {
+            grid-column: 1/-1;
+            margin: 0;
+            text-align: center;
+            font-size: .76rem;
+            color: var(--mut-2)
+        }
+
+        .pm-ok {
+            display: none;
+            padding: 40px 28px;
+            text-align: center
+        }
+
+        .pm-ok b {
+            display: block;
+            margin-bottom: 8px;
+            font: 700 1.5rem 'Poppins', sans-serif;
+            color: var(--blue)
+        }
+
+        .pm-ok p {
+            margin: 0;
+            color: var(--mut)
+        }
+
+        .pm-box.done .pm-form {
+            display: none
+        }
+
+        .pm-box.done .pm-ok {
+            display: block
+        }
+
+        body.pm-lock {
+            overflow: hidden
+        }
+
+        @media (max-width:640px) {
+            .pm {
+                padding: 0;
+                place-items: end center
+            }
+
+            .pm-box {
+                max-width: 100%;
+                max-height: 92dvh;
+                border-radius: 24px 24px 0 0
+            }
+
+            .pm-hero {
+                min-height: 160px;
+                padding: 22px 20px
+            }
+
+            .pm-form {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 22px 20px 26px
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .pm,
+            .pm-box {
+                transition: none
+            }
+        }
     </style>
 </head>
 
@@ -2547,11 +2903,25 @@
                     <div class="dd-m"><a href="#by-college">By college</a><a href="#by-course">By course</a></div>
                 </div>
                 <a href="#eligibility">Eligibility</a>
-                <a href="#compare">Compare</a>
                 <a href="#why">Why Dubai</a>
+                <a href="#compare">Compare</a>
                 <a href="#admission">Admission Support</a>
                 <a href="#faq">FAQs</a>
-                <a class="b nav-cta" href="#apply">Talk to an expert</a>
+                <a class="expert-btn" href="tel:+971 50 495 5123">
+                    <div class="icon-wrapper">
+                        <!-- Phone Icon SVG -->
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        <div class="status-dot"></div>
+                    </div>
+
+                    <div class="text-content">
+                        <span class="text-sub">Toll free</span>
+                        <span class="text-main">Talk to an expert</span>
+                    </div>
+                </a>
             </nav>
         </div>
     </header>
@@ -2568,7 +2938,7 @@
                     </h1>
                     <p class="hero-lead rise r3">for your dream degree at world-class universities in Dubai and beyond.
                     </p>
-                    <div class="rise r4"><a class="b hero-cta" href="#by-course">Explore programmes</a></div>
+                    <div class="rise r4"><a class="b hero-cta open-popup" href="#by-course">Explore programmes</a></div>
                 </div>
             </div>
 
@@ -2919,7 +3289,7 @@
                             <p class="me-hn" id="me-n" aria-live="polite">scholarship possible at our partner
                                 universities (UG, indicative).</p>
                         </div>
-                        <a class="b me-b" href="#predictor">Get my full estimate</a>
+                        <a class="b me-b open-popup" href="#predictor">Get my full estimate</a>
                     </div>
                 </div>
             </div>
@@ -2986,7 +3356,7 @@
                         <span id="eml">Class 12</span>.
                     </p>
                     <div id="res" aria-live="polite"></div>
-                    <a class="b g" id="ewa" href="#apply">Confirm with a counsellor</a>
+                    <a class="b g open-popup" id="ewa" href="#apply">Confirm with a counsellor</a>
                 </div>
             </div>
         </section>
@@ -3577,7 +3947,7 @@
                 }
 
                 .cmp-side {
-                    min-height: 175px;
+                    min-height: 145px;
                     padding: 22px 14px;
                 }
 
@@ -3608,7 +3978,7 @@
                 }
 
                 #compare .w {
-                    width: calc(100% - 28px);
+                    width: calc(100% - 10px);
                 }
 
                 #compare h2 {
@@ -3624,7 +3994,7 @@
                 .cmp-controls {
                     flex-direction: column;
                     align-items: stretch;
-                    gap: 14px;
+                    gap: 8px;
                     padding: 18px;
                     margin-bottom: 22px;
                     border-radius: 14px;
@@ -3636,7 +4006,7 @@
 
                 .cmp-select {
                     height: 50px;
-                    font-size: 0.82rem;
+                    font-size: 0.9rem;
                 }
 
                 .cmp-vs {
@@ -3662,7 +4032,7 @@
                 }
 
                 .cmp-side {
-                    min-height: 160px;
+
                     padding: 20px 9px;
                 }
 
@@ -3673,12 +4043,11 @@
                 }
 
                 .cmp-side h3 {
-                    font-size: 0.95rem;
-                    line-height: 1.4;
+                    font-size: 1.1rem;
                 }
 
                 .cmp-side .loc {
-                    font-size: 0.72rem;
+                    font-size: 0.6rem;
                     line-height: 1.5;
                 }
 
@@ -3691,20 +4060,20 @@
                 .cmp-label-mid {
                     position: absolute;
                     inset: 0 0 auto;
-                    height: 43px;
+                    height: 33px;
                     padding: 0 14px;
 
                     border-right: 0;
                     border-bottom: 1px solid var(--cmp-line);
                     background: #f2f5fb;
-
-                    font-size: 0.74rem;
-                    font-weight: 700;
+                    color: black;
+                    font-size: 0.8rem;
+                    font-weight: 500;
                 }
 
                 .cmp-cell {
                     min-width: 0;
-                    padding: 17px 9px;
+                    padding: 10px 9px;
                     gap: 7px;
                 }
 
@@ -3755,7 +4124,7 @@
 
             @media (max-width: 360px) {
                 #compare .w {
-                    width: calc(100% - 20px);
+                    width: calc(100% - 10px);
                 }
 
                 .cmp-side {
@@ -3763,7 +4132,7 @@
                 }
 
                 .cmp-side h3 {
-                    font-size: 0.85rem;
+                    font-size: 1rem !important;
                 }
 
                 .cmp-cell {
@@ -3812,7 +4181,7 @@
                         <p>A clear cost breakdown and guidance on loan options.</p>
                     </div>
                 </div>
-                <p class="adm-cta"><a class="b" href="#apply">Talk to a counsellor</a></p>
+                <p class="adm-cta open-popup"><a class="b " href="#apply">Talk to a counsellor</a></p>
             </div>
         </section>
 
@@ -3912,7 +4281,7 @@
                             <select id="cf-course" name="course"></select>
                         </div>
                         <div class="form-submit">
-                            <button class="b" type="submit">Talk to a counsellor</button>
+                            <button class="b open-popup" type="submit">Talk to a counsellor</button>
                         </div>
                         <p class="form-note">By submitting you agree to be contacted about admissions and scholarships.
                         </p>
@@ -3926,13 +4295,11 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <!-- Background Watermark -->
-        <div class="footer-watermark" aria-hidden="true">Scholar</div>
 
+    <footer class="site-footer">
+        <div class="footer-watermark" aria-hidden="true">Scholar</div>
         <div class="w footer-inner">
             <div class="fg">
-                <!-- Brand Column -->
                 <div class="footer-brand">
                     <a class="footer-logo" href="#top" aria-label="Learntech">
                         <img src="Media/Logo/Learntech_White.svg" alt="Learntech" width="222" height="52">
@@ -4023,7 +4390,7 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                                 <polyline points="22,6 12,13 2,6" />
                             </svg>
-                            <a href="mailto:info@learntechww.com">info@learntechww.com</a>
+                            <a href="mailto:uae@learntechww.com">uae@learntechww.com</a>
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -4031,7 +4398,7 @@
                                 <path
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
-                            <a href="tel:+919606949066">+91 96069 49066</a>
+                            <a href="tel:+971 50 495 5123">+971 50 495 5123</a>
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -4039,23 +4406,7 @@
                                 <path
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
-                            <a href="tel:18001208696">1800 120 8696 (Toll Free)</a>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <a href="tel:08026631169">080-26631169</a>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <a href="tel:08022454991">080-22454991</a>
+                            <a href="tel:+971 50 243 6552">+971 50 243 6552</a>
                         </li>
                     </ul>
                 </div>
@@ -4075,6 +4426,486 @@
             </svg>
         </a>
     </footer>
+
+    <div class="pm" id="pm" aria-hidden="true">
+        <div class="pm-box" role="dialog" aria-modal="true" aria-labelledby="pm-t">
+            <div class="pm-hero">
+                <button type="button" class="pm-x" id="pm-x" aria-label="Close">&times;</button>
+                <span class="pm-chip">Up to 40% scholarship</span>
+                <h3 id="pm-t">Check your Dubai scholarship</h3>
+                <p>Share your details and a counsellor will call you shortly.</p>
+            </div>
+            <form class="pm-form" id="pm-form">
+                <div class="form-field">
+                    <label for="pf-name">Full name <span class="req">*</span></label>
+                    <input id="pf-name" type="text" placeholder="Enter your full name" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                    <label for="pf-phone">Phone number <span class="req">*</span></label>
+                    <input id="pf-phone" type="tel" placeholder="Mobile number" required pattern="[0-9+\s\-]{7,15}"
+                        autocomplete="tel">
+                </div>
+                <div class="form-field">
+                    <label for="pf-email">Email <span class="req">*</span></label>
+                    <input id="pf-email" type="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="pf-city">City</label>
+                    <select id="pf-city">
+                        <option>Dubai</option>
+                        <option>Abu Dhabi</option>
+                        <option>Sharjah</option>
+                        <option>Ajman</option>
+                        <option>Ras Al Khaimah</option>
+                        <option>Fujairah</option>
+                        <option>Umm Al Quwain</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="pf-college">College</label>
+                    <select id="pf-college">
+                        <option>Symbiosis International University Dubai</option>
+                        <option>BITS Pilani Dubai</option>
+                        <option>Not sure, help me choose</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="pf-course">Interested course</label>
+                    <select id="pf-course"></select>
+                </div>
+                <div class="full"><button class="b" type="submit">Check my scholarship</button></div>
+                <p class="pm-note">By submitting you agree to be contacted about admissions and scholarships.</p>
+            </form>
+            <div class="pm-ok">
+                <b>You're cleared for take-off!</b>
+                <p>A counsellor will get in touch with you shortly.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 1) CSS: paste inside your <style> (or your .css file, without the style tags) -->
+    <style>
+        /* ===== Popup form ===== */
+        .pm {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            padding: 16px;
+            background: rgba(8, 16, 44, .62);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s, visibility .25s
+        }
+
+        .pm.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero on top, fields stacked below. Heights scale with the viewport, so no scroller. */
+        .pm-box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 560px;
+            max-height: calc(100dvh - 32px);
+            overflow: hidden;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: var(--sh-3, 0 30px 70px rgba(10, 22, 58, .35));
+            transform: translateY(18px) scale(.98);
+            transition: transform .3s ease
+        }
+
+        .pm.open .pm-box {
+            transform: none;
+        }
+
+        .pm-hero {
+            position: relative;
+            display: flex;
+            flex: none;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: clamp(84px, 17dvh, 132px);
+            padding: clamp(14px, 3dvh, 26px) 64px clamp(12px, 2.4dvh, 20px) 28px;
+            color: #fff;
+            background: linear-gradient(180deg, rgba(10, 22, 58, .25) 0%, rgba(10, 22, 58, .92) 100%), url("Media/popup-form.png") center/cover no-repeat, #274896
+        }
+
+        .pm-chip {
+            align-self: flex-start;
+            margin-bottom: clamp(6px, 1.2dvh, 10px);
+            padding: 4px 11px;
+            border-radius: var(--r-pill, 999px);
+            background: var(--gold, #F5B83D);
+            color: var(--ink, #1B2233);
+            font: 700 .68rem 'Poppins', sans-serif;
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+
+        .pm-hero h3 {
+            margin: 0 0 4px;
+            color: #fff;
+            font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+            font-weight: 600;
+            line-height: 1.2
+        }
+
+        .pm-hero p {
+            margin: 0;
+            color: #D6DEF0;
+            font-size: .85rem;
+        }
+
+        .pm-x {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 2;
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, .5);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background .18s, color .18s
+        }
+
+        .pm-x:hover {
+            background: #fff;
+            color: var(--ink, #1B2233);
+        }
+
+        .pm-x:focus-visible {
+            outline: 3px solid var(--gold, #F5B83D);
+            outline-offset: 2px;
+        }
+
+        /* Fields: one below the other */
+        .pm-form {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(6px, 1.2dvh, 10px);
+            padding: clamp(12px, 2.4dvh, 22px) 28px
+        }
+
+        .pm-form .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .pm-form .form-field label {
+            font-size: .76rem;
+            font-weight: 500;
+            color: var(--ink, #1B2233);
+        }
+
+        .pm-form .form-field .req {
+            color: var(--red, #E93C47);
+        }
+
+        .pm-form .form-field input,
+        .pm-form .form-field select {
+            width: 100%;
+            height: clamp(34px, 5.6dvh, 42px);
+            padding: 0 14px;
+            border: 1.5px solid var(--line, #D9E0F0);
+            border-radius: 12px;
+            background: #fff;
+            color: var(--ink, #1B2233);
+            font: 400 .9rem 'Poppins', sans-serif;
+            transition: border-color .18s, box-shadow .18s
+        }
+
+        .pm-form .form-field select {
+            -webkit-appearance: none;
+            appearance: none;
+            padding-right: 38px;
+            background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23274896' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center;
+            cursor: pointer
+        }
+
+        .pm-form .form-field input::placeholder {
+            color: var(--mut-2, #8590A6);
+        }
+
+        .pm-form .form-field input:focus,
+        .pm-form .form-field select:focus {
+            outline: 0;
+            border-color: var(--blue, #274896);
+            box-shadow: 0 0 0 4px rgba(39, 72, 150, .14)
+        }
+
+        .pm-form .full {
+            margin-top: 2px;
+        }
+
+        .pm-form .b {
+            width: 100%;
+            padding: clamp(10px, 1.8dvh, 14px) 24px;
+            font-size: 1rem;
+        }
+
+        .pm-note {
+            margin: 0;
+            text-align: center;
+            font-size: .72rem;
+            line-height: 1.4;
+            color: var(--mut-2, #8590A6);
+        }
+
+        /* Success state */
+        .pm-ok {
+            display: none;
+            padding: 48px 28px;
+            text-align: center;
+        }
+
+        .pm-ok b {
+            display: block;
+            margin-bottom: 8px;
+            font: 700 1.5rem 'Poppins', sans-serif;
+            color: var(--blue, #274896);
+        }
+
+        .pm-ok p {
+            margin: 0;
+            color: var(--mut, #5B6478);
+        }
+
+        .pm-box.done .pm-form {
+            display: none;
+        }
+
+        .pm-box.done .pm-ok {
+            display: block;
+        }
+
+        body.pm-lock {
+            overflow: hidden;
+        }
+
+        /* Short screens: drop the secondary text */
+        @media (max-height:720px) {
+            .pm-hero p {
+                display: none;
+            }
+
+            .pm-note {
+                display: none;
+            }
+        }
+
+        @media (max-height:600px) {
+            .pm-chip {
+                display: none;
+            }
+
+            .pm-form .form-field label {
+                font-size: .72rem;
+            }
+        }
+
+        /* Mobile: bottom sheet */
+        @media (max-width:640px) {
+            .pm {
+                padding: 0;
+                place-items: end center;
+            }
+
+            .pm-box {
+                max-width: 100%;
+                max-height: 100dvh;
+                border-radius: 24px 24px 0 0
+            }
+
+            .pm-hero {
+                padding-left: 20px;
+            }
+
+            .pm-form {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .pm-ok {
+                padding: 40px 20px 48px;
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .pm,
+            .pm-box,
+            .b {
+                transition: none;
+            }
+        }
+    </style>
+
+    <!-- 2) HTML: paste just before </body> -->
+    <!-- ===== Popup form ===== -->
+    <div class="pm" id="pm" aria-hidden="true">
+        <div class="pm-box" role="dialog" aria-modal="true" aria-labelledby="pm-t">
+            <div class="pm-hero">
+                <button type="button" class="pm-x" id="pm-x" aria-label="Close">&times;</button>
+                <span class="pm-chip">Up to 40% scholarship</span>
+                <h3 id="pm-t">Check your Dubai scholarship</h3>
+                <p>Share your details and a counsellor will call you shortly.</p>
+            </div>
+            <form class="pm-form" id="pm-form">
+                <div class="form-field">
+                    <label for="pf-name">Full name <span class="req">*</span></label>
+                    <input id="pf-name" type="text" placeholder="Enter your full name" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                    <label for="pf-phone">Phone number <span class="req">*</span></label>
+                    <input id="pf-phone" type="tel" placeholder="Mobile number" required pattern="[0-9+\s\-]{7,15}"
+                        autocomplete="tel">
+                </div>
+                <div class="form-field">
+                    <label for="pf-email">Email <span class="req">*</span></label>
+                    <input id="pf-email" type="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="pf-city">City</label>
+                    <select id="pf-city">
+                        <option>Dubai</option>
+                        <option>Abu Dhabi</option>
+                        <option>Sharjah</option>
+                        <option>Ajman</option>
+                        <option>Ras Al Khaimah</option>
+                        <option>Fujairah</option>
+                        <option>Umm Al Quwain</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="pf-college">College</label>
+                    <select id="pf-college">
+                        <option>Symbiosis International University Dubai</option>
+                        <option>BITS Pilani Dubai</option>
+                        <option>Not sure, help me choose</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="pf-course">Interested course</label>
+                    <select id="pf-course"></select>
+                </div>
+                <div class="full"><button class="b" type="submit">Check my scholarship</button></div>
+                <p class="pm-note">By submitting you agree to be contacted about admissions and scholarships.</p>
+            </form>
+            <div class="pm-ok">
+                <b>You're cleared for take-off!</b>
+                <p>A counsellor will get in touch with you shortly.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3) JS: paste after the HTML above, below your script that defines COL and PR -->
+    <script>
+        (function () {
+            var m = document.getElementById('pm'), box = m.querySelector('.pm-box'),
+                form = document.getElementById('pm-form'),
+                col = document.getElementById('pf-college'), crs = document.getElementById('pf-course'),
+                FORM_ENDPOINT = '', lastFocus = null;
+
+            function fillCourses() {
+                var hit = COL.filter(function (c) { return c[1] === col.value; });
+                var h = '<option value="">Select course</option>';
+                (hit.length ? hit : COL).forEach(function (c) {
+                    h += '<optgroup label="' + c[1] + '">';
+                    PR.forEach(function (x) { if (x[4] === c[0]) h += '<option value="' + x[0] + '">' + x[0] + '</option>'; });
+                    h += '</optgroup>';
+                });
+                crs.innerHTML = h;
+            }
+
+            function open(collegeName) {
+                lastFocus = document.activeElement;
+                box.classList.remove('done');
+                form.reset();
+                if (collegeName) col.value = collegeName;
+                fillCourses();
+                m.classList.add('open');
+                m.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('pm-lock');
+                setTimeout(function () { document.getElementById('pf-name').focus(); }, 120);
+            }
+
+            function close() {
+                m.classList.remove('open');
+                m.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('pm-lock');
+                if (lastFocus) lastFocus.focus();
+            }
+
+            // Triggers (delegated, so JS-rendered buttons work too):
+            // hero "Explore programmes", college-card buttons, or any element with .open-popup / data-open-popup.
+            // Optional: data-college="symbiosis" | "bits" pre-selects the college.
+            var TRIGGERS = '.hero-cta, .college-card .b, .open-popup, [data-open-popup]';
+            document.addEventListener('click', function (e) {
+                var a = e.target.closest ? e.target.closest(TRIGGERS) : null;
+                if (!a || m.contains(a)) return;
+                e.preventDefault();
+                var card = a.closest('.college-card'),
+                    key = a.getAttribute('data-college') || (card ? card.id : ''),
+                    name = '';
+                COL.forEach(function (c) { if (c[0] === key) name = c[1]; });
+                open(name);
+            });
+
+            document.getElementById('pm-x').addEventListener('click', close);
+            m.addEventListener('mousedown', function (e) { if (e.target === m) close(); });
+            col.addEventListener('change', fillCourses);
+
+            document.addEventListener('keydown', function (e) {
+                if (!m.classList.contains('open')) return;
+                if (e.key === 'Escape') return close();
+                if (e.key === 'Tab') {
+                    var f = box.querySelectorAll('button:not([disabled]),input,select,a[href]');
+                    if (!f.length) return;
+                    var first = f[0], last = f[f.length - 1];
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            });
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var data = {
+                    name: document.getElementById('pf-name').value.trim(),
+                    phone: document.getElementById('pf-phone').value.trim(),
+                    email: document.getElementById('pf-email').value.trim(),
+                    city: document.getElementById('pf-city').value,
+                    college: col.value,
+                    course: crs.value
+                };
+                function done(ok) {
+                    if (ok) box.classList.add('done');
+                    else alert('Could not send your details. Please call +971 50 495 5123 and we will help you.');
+                }
+                if (FORM_ENDPOINT) {
+                    fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+                        .then(function (r) { done(r.ok); }, function () { done(false); });
+                } else { done(true); }
+            });
+        })();
+    </script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -4262,7 +5093,7 @@
                     '<div class="cs-sch"><span class="cs-lbl">Scholarship</span><div class="cs-val">' +
                     (pre_ ? '<i>' + pre_.trim() + '</i>' : '') + '<b>' + big + '</b>' + (post ? '<u>' + post + '</u>' : '') + '</div></div>' +
                     '<div class="cs-meta">' + meta + '</div>' +
-                    '<a class="cs-cta" href="#apply" data-k="' + col[0] + '" data-t="' + x[0] + '" data-l="' + x[1] + '" data-u="' + col[1] + '"><span>Enquire now</span><i>' + ico('go') + '</i></a>' +
+                    '<a class="cs-cta open-popup" href="#apply" data-k="' + col[0] + '" data-t="' + x[0] + '" data-l="' + x[1] + '" data-u="' + col[1] + '"><span>Enquire now</span><i>' + ico('go') + '</i></a>' +
                     '</article>';
             }
 
@@ -4554,6 +5385,102 @@
 
             // Set the correct initial content and banners
             update();
+        })();
+    </script>
+
+    <script>
+        (function () {
+            var m = document.getElementById('pm'), box = m.querySelector('.pm-box'),
+                form = document.getElementById('pm-form'),
+                col = document.getElementById('pf-college'), crs = document.getElementById('pf-course'),
+                FORM_ENDPOINT = '', lastFocus = null;
+
+            function fillCourses() {
+                var hit = COL.filter(function (c) { return c[1] === col.value; });
+                var h = '<option value="">Select course</option>';
+                (hit.length ? hit : COL).forEach(function (c) {
+                    h += '<optgroup label="' + c[1] + '">';
+                    PR.forEach(function (x) { if (x[4] === c[0]) h += '<option value="' + x[0] + '">' + x[0] + '</option>'; });
+                    h += '</optgroup>';
+                });
+                crs.innerHTML = h;
+            }
+
+            function open(collegeName) {
+                lastFocus = document.activeElement;
+                box.classList.remove('done');
+                form.reset();
+                if (collegeName) col.value = collegeName;
+                fillCourses();
+                m.classList.add('open');
+                m.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('pm-lock');
+                setTimeout(function () { document.getElementById('pf-name').focus(); }, 120);
+            }
+
+            function close() {
+                m.classList.remove('open');
+                m.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('pm-lock');
+                if (lastFocus) lastFocus.focus();
+            }
+
+            // Triggers: hero "Explore programmes" + college-card "Check my scholarship"
+            document.querySelectorAll('.hero-cta, .college-card .b').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var card = a.closest('.college-card'), name = '';
+                    if (card) name = card.id === 'symbiosis' ? COL[0][1] : card.id === 'bits' ? COL[1][1] : '';
+                    open(name);
+                });
+            });
+
+            document.getElementById('pm-x').addEventListener('click', close);
+            m.addEventListener('mousedown', function (e) { if (e.target === m) close(); });
+            col.addEventListener('change', fillCourses);
+
+            document.addEventListener('keydown', function (e) {
+                if (!m.classList.contains('open')) return;
+                if (e.key === 'Escape') return close();
+                if (e.key === 'Tab') {
+                    var f = box.querySelectorAll('button:not([disabled]),input,select,a[href]');
+                    if (!f.length) return;
+                    var first = f[0], last = f[f.length - 1];
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            });
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var data = {
+                    name: document.getElementById('pf-name').value.trim(),
+                    phone: document.getElementById('pf-phone').value.trim(),
+                    email: document.getElementById('pf-email').value.trim(),
+                    city: document.getElementById('pf-city').value,
+                    college: col.value,
+                    course: crs.value
+                };
+                function done(ok) {
+                    if (ok) box.classList.add('done');
+                    else alert('Could not send your details. Please call +971 50 495 5123 and we will help you.');
+                }
+                if (FORM_ENDPOINT) {
+                    fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+                        .then(function (r) { done(r.ok); }, function () { done(false); });
+                } else { done(true); }
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var items = document.querySelectorAll('.fq-r details');
+            items.forEach(function (d) {
+                d.addEventListener('toggle', function () {
+                    if (!d.open) return;
+                    items.forEach(function (o) { if (o !== d) o.removeAttribute('open'); });
+                });
+            });
         })();
     </script>
 </body>
