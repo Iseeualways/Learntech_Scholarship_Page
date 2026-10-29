@@ -215,12 +215,13 @@
         }
 
         @media (max-width: 768px) {
-    header:not(.solid) .nav nav > a:not(.b),
-    header:not(.solid) .nb {
-        color: #000000;
-        text-shadow: none;
-    }
-}
+
+            header:not(.solid) .nav nav>a:not(.b),
+            header:not(.solid) .nb {
+                color: #000000;
+                text-shadow: none;
+            }
+        }
 
         header:not(.solid) .nav nav>a:not(.b):hover,
         header:not(.solid) .nb:hover {
@@ -271,6 +272,29 @@
             color: #fff;
             background: #010102 url("Media/hero-banner.webp") center / cover no-repeat;
             background-position: 100%;
+        }
+
+        /* Mobile hero background */
+        @media (max-width: 768px) {
+            .hero {
+                background-image: url("Media/Mobi_01.webp");
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero::before {
+                background:
+                    linear-gradient(180deg,
+                        rgb(10, 22, 58) 0%,
+                        rgba(10, 22, 58, 0.548) 45%,
+                        rgba(10, 22, 58, 0.15) 100%),
+                    linear-gradient(0deg,
+                        rgba(8, 16, 44, 0) 0%,
+                        transparent 40%) !important;
+            }
         }
 
         .hero::before {
@@ -376,7 +400,7 @@
             margin: clamp(14px, 1.8vw, 22px) 0 clamp(22px, 2.6vw, 30px);
             max-width: 21em;
             font-weight: 400;
-            font-size: clamp(1rem, 1.6vw, 1.36rem);
+            font-size: clamp(1.4rem, 1.6vw, 1.36rem);
             line-height: 1.45;
             color: rgba(255, 255, 255, .94);
             text-wrap: pretty;
@@ -985,12 +1009,12 @@
 
         @media (max-width: 640px) {
 
-            
-        .w {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 4px;
-        }
+
+            .w {
+                max-width: 1300px;
+                margin: 0 auto;
+                padding: 0 4px;
+            }
 
 
             .est .b {
