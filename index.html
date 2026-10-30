@@ -5060,7 +5060,7 @@
             var el = document.getElementById('edge-contact');
             if (!el) return;
             el.classList.add('is-ready');
-            function toggle() { el.classList.toggle('is-on', window.scrollY > 240); }
+            function toggle() { el.classList.toggle('is-on', window.scrollY > 180); }
             toggle();
             window.addEventListener('scroll', toggle, { passive: true });
         })();
