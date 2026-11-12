@@ -719,6 +719,19 @@
             transform: translateX(4px);
         }
 
+        .hero-enquire {
+            background: transparent;
+            border-color: rgba(255, 255, 255, .85);
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .hero-enquire:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: #fff;
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .hero {
                 background-image: url("Media/Mobi_01.webp");
@@ -3730,7 +3743,10 @@
                                 class="hero-sch">scholarship</span></span>
                     </h1>
                     <p class="hero-lead rise r3">Towards your dream degree at leading universities in Dubai.</p>
-                    <div class="rise r4"><a class="b hero-cta open-popup" href="#by-course">Explore programmes</a></div>
+                    <div class="rise r4" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:16px">
+                        <a class="b hero-cta" href="#by-course">Explore programmes</a><a
+                            class="b hero-cta hero-enquire open-popup" href="#by-course">Enquire</a>
+                    </div>
                 </div>
             </div>
 
